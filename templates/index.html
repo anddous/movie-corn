@@ -1,0 +1,184 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<main>
+<nav class='navbar bg-dark navbar-dark navbar-expand-sm'>
+<div class='container'>    
+  	<a class='navbar-brand' href='#'>
+			<img src="{{ url_for('static', filename='pop-corn.png') }}" style='width: 80px;' alt="MOVIE-CORN">
+			MOVIE-CORN
+  	</a>
+    <div class='navbar-nav'>
+      <a class="nav-item nav-link active" href="/registrace">Registrace</a>
+			<a class="nav-item nav-link active" href="/prihlaseni">Přihlásit</a>
+			<a class="nav-item nav-link active" href="/detail_m">Detail</a>
+    </div>
+</div> <!-- konec container-->
+</nav> <!-- konec konec navbaru-->	
+<br>
+<br>
+
+<div class='container'>                                                                    
+   <div class='row'> 
+    <div class='col-md-6'>                       
+      <div class='jumbotron' style="background-color:#353A41;" style="text-align: center">                    
+            <div class="text-center">
+                        <p><b style="color: white;">Nech se překvapit - vyber pouze žánr a vybereme Ti 5 filmů</b>
+                        </p>                        
+                        <div class="dropdown">                          
+                            <button class="btn btn-danger btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">ZKUSÍM ŠTĚSTÍ                           
+                            <span id="select-lucky-category" class="caret"> </span>
+                            </button>                          
+															<ul class="dropdown-menu" role="menu">
+																<li class="dropdown-item">komedie</li>
+																<li class="dropdown-item">krimi</li>
+																<li class="dropdown-item">triller</li>
+																<li class="dropdown-item">horror</li>
+																<li class="dropdown-item">akční</li>
+																<li class="dropdown-item">romantika</li>
+																<li class="dropdown-item">animované</li>
+																<li class="dropdown-item">pro dospělé</li>
+																<li class="dropdown-item">vše</li> 	
+                            </ul>                        
+                        </div>    <!-- konec dropdown - ZKUSÍM ŠTĚSTÍ-->
+                        <br>
+												<br>
+         </div><!-- konec class-center na jumbrotron v levém column6-->
+											 	<p style="color: white">Víš, že databáze, kterou prozkoumáváš:
+                          <ul style="color: white">
+                           <li>obsahuje neskutečných XXXX filmů od roku XXX </li>
+                            <li>byla legálně stažena z IMDB</li>
+                            <li>Ti pomůže rychle vyhledat film, u kterého chceš „zabít“ svůj volný čas</li>
+                          </ul>
+                       </p>
+       </div>    <!-- konec jumbotronu v levém column 6-->            
+    </div>   <!-- konec levý column 6-->
+
+              <div class='col-md-6'> <!--začátek pravý colummn 6-->
+                <div class='jumbotron jumbotron-fluid' style="background-color:#353A41;" style='text-align: center'>   
+                  <div class="text-center">                 
+                      <p><b style="color: white">Můžeš si zúžit výběr podle řady parametrů:</b></p>
+                   		 <div class="btn-group">
+
+												<!--
+												<select class="form-control">
+													<option>2018</option>
+													<option>2019</option>
+												</select>
+												-->
+												
+
+											<!--ZAČÁTEK dropdown ROK-->
+												<div class="dropdown"> 
+														<button type="button" class="btn btn-default dropdown-toggle" id="dropdown-years" data-toggle="dropdown">
+															<span id="select-year" class="value">rok</span> 
+																<span class="caret"></span></button>
+
+																	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-years">
+																		<li class="dropdown-item">1950-1990</li>
+																		<li class="dropdown-item">1991-2000</li>
+																		<li class="dropdown-item">2001-2010</li>  
+																		<li class="dropdown-item">2011 ...</li>
+																		<li class="dropdown-item">vše</li>  
+																	</ul>
+												</div> <!--KONEC dropdown ROK-->
+
+												<!--ZAČÁTEK dropdown ŽÁNR-->
+                        <div class="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+													<span id="select-category" class="value">žánr</span>  
+													<span class="care"></span></button>
+                          <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-item">komedie</li>
+                            <li class="dropdown-item">krimi</li>
+                            <li class="dropdown-item">triller</li>
+                            <li class="dropdown-item">horror</li>
+                            <li class="dropdown-item">akční</li>
+                            <li class="dropdown-item">romantika</li>
+                            <li class="dropdown-item">animované</li>
+                            <li class="dropdown-item">pro dospělé</li>
+						              	<li class="dropdown-item">vše</li>
+                          </ul>
+												</div> <!--KONEC dropdown ŽÁNR-->
+
+											<!--ZAČÁTEK dropdown DÉLKA-->
+                       <div class="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+													<span id="select-length" class="value">délka</span>  
+														<span class="caret"></span></button>
+															<ul class="dropdown-menu" role="menu">
+															<li class="dropdown-item"> &lt;60 min.</li>
+															<li class="dropdown-item"> &lt;90 min.</li>
+															<li class="dropdown-item"> &lt;120 min.</li>
+															<li class="dropdown-item"> &gt;120 min.</li>
+															<li class="dropdown-item">vše</li>
+															</ul>
+                        </div> <!--KONEC dropdown DÉLKA-->
+
+												<!--ZAČÁTEK dropdown TYP-->
+                        <div class="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+														<span id="select-type" class="value">typ</span>  
+															<span class="caret"></span></button>
+															<ul class="dropdown-menu" role="menu">
+																<li class="dropdown-item">film</li>
+																<li class="dropdown-item">seriál</li>
+																<li class="dropdown-item">vše</li>
+															</ul>
+												</div>
+												<!--ZAČÁTEK dropdown RATING-->
+                        <div class="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+														<span id="select-rating" class="value">rating</span>  
+															<span class="caret"></span></button>
+															<ul class="dropdown-menu" role="menu">
+																<li class="dropdown-item"> &lt;=5.0</li>
+																<li class="dropdown-item"> &lt;=7.0</li>
+																<li class="dropdown-item">&lt;=8.0</li>
+																<li class="dropdown-item">&gt;=8.0</li>
+																<li class="dropdown-item">vše</li>
+															</ul>
+                        </div> <!--KONEC dropdown RATING-->
+                    </div> <!-- konec MENU tlačítek-->   
+					</div> <!--konec class-center pravý column-->
+					<br>
+
+					<!--tlačítko HLEDAT-->
+            <div class='well well-lg' style='text-align: center'>
+              <button class='btn btn-danger btn-lg' id="button-search">HLEDAT</button>
+            </div>
+					</div>	<!-- konec jumbrotronu pravý column6-->
+				
+				<!--OBRÁZEK PRAVÝ SLOUPEC-->
+					<div class="img-fluid">
+						<img class="img-responsive" src="{{ url_for('static', filename='pozadi7.jpg') }}"  style="width:100%">
+					</div> 
+     </div> <!-- KONEC PRAVÝ COLUMN6-->
+</div><!--KONEC ROW (OBA SLOUPCE)-->
+
+
+
+<div id="search-result"></div>
+
+
+
+
+</div><!--KONEC CELÉHO KONTAJNERU (OBA SLOUPCE)-->
+
+<!--PATIČKA-->
+<nav class='navbar bg-default navbar-default navbar-fixed-bottom'>           
+<div class='container'>    
+    <a class='navbar-brand' href='#'>
+      <img src="{{ url_for('static', filename='czechitas.png') }}" style='width: 150px;' alt="Czechitas">
+    </a>
+ 
+    <div class="col-md-6">
+			<p class='mb-0' style='color:#353A41'><b>&copy Andrea Doušová a Michaela Kalná. 2018. <br>V rámci projektu DA Czechitas <a href="https://www.czechitas.cz/cs/">www.czechitas.cz</a></b></p>
+	</div>	
+
+ </div> <!--KONEC CONTAINERU PATIČKY-->
+</nav> <!--KONEC PATIČKY-->
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<main> 
+<nav class='navbar bg-dark navbar-dark navbar-expand-sm'>
+<div class='container'>    
+    <a class='navbar-brand' href='#'>
+			<img src="{{ url_for('static', filename='pop-corn.png') }}" style='width: 80px;' alt="MOVIE-CORN">
+			MOVIE-CORN
+	</a>
+    <div class='navbar-nav'>
+      <a class="nav-item nav-link active" href="{{ url_for('index') }}">Zpět na hlavní stránku</a>
+   
+    </div>
+</div>
+</nav>
+                           
+<div class="jumbotron jumbotron-fluid">   
+	<div class='container'>   			
+       <h2 class='text-md-center'>PŘIHLÁŠENÍ UŽIVATELE</h2>  
+          <div class='row'>                    
+              <div class='col-md-12'>                       
+                 <form action="/action_page.php">
+                      <div class="form-group">
+                        <label for="email">Emailová adresa:</label>
+                        <input type="email" class="form-control" id="email">
+                      </div>
+                      <div class="form-group">
+                        <label for="pwd">Heslo:</label>
+                        <input type="password" class="form-control" id="pwd">
+                      </div>
+                      <div class="checkbox">
+                        <label><input type="checkbox"> Pamatovat si přihlašovací údaje.</label>
+                      </div>
+                      <button type="submit" class="btn btn-default">Přihlásit</button>
+                    </form>
+                    <br>
+               <p>Pokud nemáš ještě registraci, můžeš si ji vytvořit <a href="{{ url_for('registrace') }}">ZDE.</a>
+               </p>      
+                </div>        <!-- konec třídy - rozdělení na 2 sloupece - col6-->          
+            </div> <!--konec row-->  
+    </div>                   
+</div>   <!-- end container-->
+
+<!-- footer-->
+<nav class='navbar bg-default navbar-default navbar-fixed-bottom'>           
+ <div class='container'>    
+    <a class='navbar-brand' href='#'>
+      <img src="{{ url_for('static', filename='czechitas.png') }}" style='width: 150px;' alt="Czechitas">
+    </a>
+ 
+    <div class="col-md-6">
+		<p class='mb-0' style='color:#353A41'><b>&copy Andrea Doušová a Michaela Kalná. 2018. <br>V rámci projektu DA Czechitas <a href="https://www.czechitas.cz/cs/">www.czechitas.cz</a></b></p>
+	</div>	
+
+ </div>
+</nav>
+
+</main>
+
+{% endblock %}

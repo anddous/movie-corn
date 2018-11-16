@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<main> 
+<nav class='navbar bg-dark navbar-dark navbar-expand-sm'>
+<div class='container'>    
+    <a class='navbar-brand' href='#'>
+			<img src="{{ url_for('static', filename='pop-corn.png') }}" style='width: 80px;' alt="MOVIE-CORN">
+			MOVIE-CORN <!--FAVICON-->
+	</a>
+    <div class='navbar-nav'>
+      <a class="nav-item nav-link active" href="{{ url_for('index') }}">Zpět na hlavní stránku</a>
+   
+    </div>
+</div> <!-- END CONTAINER NAVBAR-->
+</nav> <!--END NAVBAR -->
+
+<!--výsledky hledání-->
+<div class="jumbotron jumbotron-fluid">
+	<div class='container'>
+			<!-- box MEDIA pro detail filmu-->
+									<div class="media">
+										<img class="media-left" width="200px" margin-right='20px' alt="Image" src="/static/icon_poster.png">
+										<div class="media-body">
+											<div class="ml-3 mb-5">
+											 <h4 class="card-title">Název filmu</h4>
+												<div class="container">
+													<div class="row">
+														<div class="col-md-4">
+																<p class:"m-0"><small>Rok:</small></p>
+																<p class:"m-0"><small>Herci:</small></p>
+														</div>
+														<div class="col-md-4">
+															<p class:"m-0"><small>Rating:</small></p>
+															<p class:"m-0"><small>Země původu:</small></p>
+														</div>
+														<div class="col-md-4">
+															<div class="text-right">
+															<button type="button" class="btn btn-dark">Uložit do WATCH LISTU</button>	
+															</div>
+														
+													</div>
+												</div>	
+												</div>
+												<div class="container">
+													<div class="row">
+														<div class="col-md-12">
+															<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Fusce consectetuer risus a nunc. Nulla quis diam. Etiam bibendum elit eget erat. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Quisque tincidunt scelerisque libero. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nulla non arcu lacinia neque faucibus fringilla. Fusce nibh. Ut tempus purus at lorem. Morbi scelerisque luctus velit. Phasellus et lorem id felis nonummy placerat. I</p>
+														</div>  <!--KONEC COLUMN -12-->
+													</div>  <!--KONEC ROW V KONTAINERU NA TEXTY-->
+												</div> <!--KONEC KONTAINER NA TEXTY-->
+											</div> <!-- KONEC MARGIN 4-->
+										</div> <!-- KONEC MEDIA BODY-->
+									</div><!-- KONEC CLASS MEDIA-->
+
+<div class="row">
+		<div class="col-md-6">
+			<div class="shadow p-4 mb-4 bg-white">
+				<h5>Kde můžeš film vidět?</h5>
+				<p>ULOŽTO</p>
+				<p>NETFLIX</p>
+				<p>HBOGO</p>
+			</div>
+		</div>
+	<div class="col-md-6">
+			<div class="shadow p-4 mb-4 bg-white">
+		<h5>Titulky ke stažení?</h5>
+			<p>titulky.com</p>
+			<p>subtitles.org</p>
+			<p>...</p>
+			</div>
+	</div>
+	</div>
+
+	
+	</div> <!-- end row container celé stránky-->
+</div>  <!--KONEC jumbotron pro popis filmu-->
+<!-- footer-->
+<nav class='navbar bg-default navbar-default navbar-fixed-bottom'>           
+ <div class='container'>    
+    <a class='navbar-brand' href='#'>
+      <img src="{{ url_for('static', filename='czechitas.png') }}" style='width: 150px;' alt="Czechitas">
+    </a> <!-- edn navbar footer-->
+ 
+    <div class="col-md-6">
+		<p class='mb-0' style='color:#353A41'><b>&copy Andrea Doušová a Michaela Kalná. 2018. <br>V rámci projektu DA Czechitas <a href="https://www.czechitas.cz/cs/">www.czechitas.cz</a></b></p>
+		</div>	<!--pravý column 6 footer -->
+
+ </div> <!-- end container footer-->
+</nav> <!-- end footer-->
+
+</main>
+
+{% endblock %}

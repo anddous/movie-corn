@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!--favicon-->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='pop-corn.ico') }}" type="image/x-icon">
+  <!--boostrap--> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}" />
+
+	<!--JQUERY-script--> 
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<!--java-script--> 
+	<script src="{{ url_for('static', filename='bootstrap.js') }}"></script>
+	<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+  
+  <title>MOVIE-CORN</title>
+</head>
+
+<body>
+	{% block content %}
+	{% endblock %}
+
+</body>
+</html>
