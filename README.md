@@ -1,4 +1,4 @@
-# movie-corn
+﻿# movie-corn
 
 PY SOUBORY:
 Funkční soubory po hackatlonu:
@@ -13,5 +13,8 @@ Index.html
 
 SQL queries 
 - zkušební pro dotazy v SQL
+
+
+a ja
 
 
