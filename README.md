@@ -15,6 +15,6 @@ SQL queries
 - zkušební pro dotazy v SQL
 
 
-a ja
+
 
 
