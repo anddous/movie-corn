@@ -30,6 +30,14 @@ on r.titleId = m.tconst
 where m.titleType like '%videoGame%';
 --where m.originalTitle like '%Julius Caesar%'
 
+-- FILTRY EPIZODY
+select m.originalTitle, e.tconst, m.tconst, m.startYear, m.runtimeMinutes, r.region, m.genres
+from imdb.Movie as m
+left join imdb.Episode as e
+on m.tconst = e.tconst
+join imdb.Region as r 
+on r.titleId = m.tconst
+where e.tconst like '%tt0071912%';
 
 
 
