@@ -129,7 +129,7 @@ elif movieType == 'film':
 
 # @rating
 rating = request.args.get('rating')
-	if rating == "vše" or year == "rating":
+	if rating == "vše" or rating == "rating":
 		ratingFrom = 0
 		ratingTo = 100
 	elif rating == '<=5.0': 
