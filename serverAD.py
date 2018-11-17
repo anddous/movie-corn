@@ -57,7 +57,6 @@ def search():
 # https://stackoverflow.com/questions/24892035/python-flask-how-to-get-parameters-from-a-url
 @movieCorn.route("/api/search")
 def search():
-	
 	year = request.args.get('year')
 	#category = request.args.get('category')
 
@@ -103,8 +102,8 @@ def search():
 	else:
 		category = '%'
 
-# @runtime
-runtime = request.args.get('runtime')
+	# @runtime
+	runtime = request.args.get('runtime')
 	if runtime == "vše" or runtime == "délka":
 		runtimeFrom = 0
 		runtimeTo = 100000000
@@ -121,14 +120,15 @@ runtime = request.args.get('runtime')
 		runtimeFrom = 120
 		runtimeTo = 10000000000
 
-# movieType = request.args.get('movieType')
-if movieType == 'seriál':
-	movieType = 'null'
-elif movieType == 'film':
-	movieType = ''
+	# movieType
+	movieType = request.args.get('movieType')
+	if movieType == 'seriál':
+		movieType = 'null'
+	elif movieType == 'film':
+		movieType = ''
 
-# @rating
-rating = request.args.get('rating')
+	# @rating
+	rating = request.args.get('rating')
 	if rating == "vše" or rating == "rating":
 		ratingFrom = 0
 		ratingTo = 100
@@ -155,18 +155,14 @@ rating = request.args.get('rating')
 					<div class="card" style="width: 18rem; background-color:#ddd">
 							<div class="card-body">"""
 		html = html + "<h5 class='card-title'>"+ str(row.movie) + "</h5>"
-		html = html + """<p class="card-text">Tady bude anotace k filmu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-								<a href="#" class="btn" style="background-color:#353A41; color:white">Detail filmu</a>
+		html = html + """<p class="card-text">Tady bude anotace k filmu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> 
+										<a href="#" class="btn" style="background-color:#353A41; color:white"> href="/detail_m" </a>
 							</div>
 						</div>
 			</div>"""
 	html = html + "</div>"
 
 	return html
-
-
-
-
 
 movieCorn.run(debug=True)
 
