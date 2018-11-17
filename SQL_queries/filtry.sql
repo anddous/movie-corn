@@ -16,10 +16,21 @@ where runtimeMinutes is not null
 order by runtimeMinutes DESC;
 
 --MOVIE_TYPE
-select top 100 m.originalTitle as movie, seasonNumber
+select m.originalTitle, e.seasonNumber
 from imdb.Movie as m
-join imdb.Episode as e 
-on e.tconst = m.tconst;
+left join imdb.Episode as e 
+on m.tconst = e.tconst
+where e.seasonNumber > 0;
+
+--jméno filmu
+select top 100 m.originalTitle, m.genres, r.region, m.titleType
+from imdb.Movie as m 
+join imdb.Region as r 
+on r.titleId = m.tconst
+where m.titleType like '%videoGame%';
+--where m.originalTitle like '%Julius Caesar%'
+
+
 
 
 

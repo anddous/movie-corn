@@ -14,7 +14,7 @@ where m.startYear >= 1950
 and m.startYear <= 2018
 and r.region in ('CZ', 'SK', 'GB', 'US')
 -- @category parametr - obsahuje aspoò jednu za kagorií
-and m.genres like '%crime%'
+and m.genres like '*'
 -- @runtime parametr - délka
 and m.runtimeMinutes > 100
 and m.runtimeMinutes < 120

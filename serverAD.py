@@ -71,7 +71,6 @@ def search():
 		yearFrom = year[:4]
 		yearTo = 9999
 
---------
 	# nový kód ANDREA
 	# @category
 	category = request.args.get('category')
@@ -79,8 +78,8 @@ def search():
 		category = 'Comedy'
 	elif category == 'krimi': 
 		category = 'Crime'
-	elif category == 'triller': 
-		category = 'Triller'
+	elif category == 'thriller': 
+		category = 'Thriller'
 	elif category == 'horor': 
 		category = 'Horror'
 	elif category == 'akční': 
@@ -89,14 +88,22 @@ def search():
 		category = 'Romance'
 	elif category == 'animované': 
 		category = 'Animation'
-	elif category == 'pro dospělé':
-		category = ???
+	elif category == 'fantasy':
+		category = 'Fantasy'
+	elif category == 'sci-fi':
+		category = 'Sci-fi'
+	elif category == 'drama':
+		category = 'Drama'
+	elif category == 'dobrodružné':
+		category = 'Adventure'
+	elif category == 'historie':
+		category = 'History'
+	elif category == 'western':
+		category = 'Western'
 	else:
-		category = *
+		category = '%'
 
-	else: # ...
-
-# @ runtime
+# @runtime
 runtime = request.args.get('runtime')
 	if runtime == "vše" or year == "délka":
 		runtimeFrom = 0
@@ -109,41 +116,38 @@ runtime = request.args.get('runtime')
 		runtimeTo = 89
 	elif runtime == '<120 min.': 
 		runtimeFrom = 0
-		runtimeTo = 120
+		runtimeTo = 119
 	else: 
-		runtimeFrom = 121
+		runtimeFrom = 120
 		runtimeTo = 10000000000
 
+# movieType = request.args.get('movieType')
+if movieType == 'seriál':
+	movieType = 'null'
+elif movieType == 'film':
+	movieType = ''
 
-# movie_type = request.args.get('movie_type')
-if movie_type == 'seriál':
-	movie_type = 'and e.seasonNumber is not null'
-
-		category = 'Triller'
 # @rating
 rating = request.args.get('rating')
 	if rating == "vše" or year == "rating":
 		ratingFrom = 0
 		ratingTo = 100
-	elif rating == '<5.0': 
+	elif rating == '<=5.0': 
 		ratingFrom = 0
-		ratingTo = 4.9
-	elif rating == '<7.0': 
-		ratingFrom = 5.0
-		ratingTo = 6.9
-	elif rating == '<8.0': 
-		ratingFrom = 7.0
-		ratingTo = 7.9
+		ratingTo = 5.0
+	elif rating == '<=7.0': 
+		ratingFrom = 5.1
+		ratingTo = 7.0
+	elif rating == '<=8.0': 
+		ratingFrom = 7.1
+		ratingTo = 8.0
 	else: 
-		runtimeFrom = 8.0
+		runtimeFrom = 8.1
 		ratingTo = 100
-
----
 
 	# Connect to the database
 	database = DatabaseService(connectionString)
-	cursor = database.get_movies(yearFrom, yearTo)
-
+	cursor = database.get_movies(yearFrom, yearTo, category, runtimeFrom, runtimeTo, movieType, ratingFrom, ratingTo)
 
 	html = "<div class='row'>"
 	for row in cursor.fetchall():

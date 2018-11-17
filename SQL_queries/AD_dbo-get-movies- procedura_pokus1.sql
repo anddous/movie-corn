@@ -1,11 +1,11 @@
 use MovieCorn
 go
 
-alter procedure dbo.usp_GetMovies(@yearFrom int, @yearTo int, @category nvarchar, @runtimeFrom int, @runtimeTo int, @movie_type nvarchar, @ratingFrom int, @ratingTo int)
+alter procedure dbo.usp_GetMovies(@yearFrom int, @yearTo int, @category nvarchar, @runtimeFrom int, @runtimeTo int, @movieType nvarchar, @ratingFrom int, @ratingTo int)
 as
 begin
 
-select distinct top 6 r.title as movie, m.startYear as rok, r.region as country, rat.averageRating as stars, e.seasonNumber as season
+select distinct top 6 r.title as movie, m.startYear as rok, r.region as country, rat.averageRating as stars, m.genres as genre
 from imdb.Movie as m
 join imdb.Region as r 
 on r.titleId = m.tconst
@@ -26,11 +26,13 @@ and m.genres like '%'+@category+'%'
 -- @runtime parametr - délka
 and m.runtimeMinutes > @runtimeFrom
 and m.runtimeMinutes < @runtimeTo
--- @movie_type 
-and @movie_type
+-- @movie_type -- nebere dotaz s 'is null', nevíme, jak se na to zeptat
+and e.seasonNumber is @movieType null
 -- @rating
 and rat.averageRating >= @ratingFrom
 and rat.averageRating <= @ratingTo
+-- omezení typu
+and m.titleType in ('movie', 'tvMovie', 'tvEpisode')
 
 end
 
