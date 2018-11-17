@@ -105,7 +105,7 @@ def search():
 
 # @runtime
 runtime = request.args.get('runtime')
-	if runtime == "vše" or year == "délka":
+	if runtime == "vše" or runtime == "délka":
 		runtimeFrom = 0
 		runtimeTo = 100000000
 	elif runtime == '<60 min.': 
