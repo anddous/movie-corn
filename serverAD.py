@@ -105,7 +105,7 @@ def search():
 
 # @runtime
 runtime = request.args.get('runtime')
-	if runtime == "vše" or year == "délka":
+	if runtime == "vše" or runtime == "délka":
 		runtimeFrom = 0
 		runtimeTo = 100000000
 	elif runtime == '<60 min.': 
@@ -129,7 +129,7 @@ elif movieType == 'film':
 
 # @rating
 rating = request.args.get('rating')
-	if rating == "vše" or year == "rating":
+	if rating == "vše" or rating == "rating":
 		ratingFrom = 0
 		ratingTo = 100
 	elif rating == '<=5.0': 
