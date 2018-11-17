@@ -155,7 +155,7 @@ def search():
 					<div class="card" style="width: 18rem; background-color:#ddd">
 							<div class="card-body">"""
 		html = html + "<h5 class='card-title'>"+ str(row.movie) + "</h5>"
-		html = html + """<p class="card-text">Tady bude anotace k filmu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> 
+		html = html + """<p class="card-text">Tady bude anotace k filmu - vzít z api - plot. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> 
 										<a href="#" class="btn" style="background-color:#353A41; color:white"> href="/detail_m" </a>
 							</div>
 						</div>

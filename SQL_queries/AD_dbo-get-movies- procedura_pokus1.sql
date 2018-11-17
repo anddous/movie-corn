@@ -5,7 +5,7 @@ alter procedure dbo.usp_GetMovies(@yearFrom int, @yearTo int, @category nvarchar
 as
 begin
 
-select distinct top 6 r.title as movie, m.startYear as rok, r.region as country, rat.averageRating as stars, m.genres as genre
+select distinct top 6 r.title as movie, m.startYear as startY, r.region as country, rat.averageRating as stars, m.genres as genre, m.runtimeMinutes as runMin, m.titleType as tType
 from imdb.Movie as m
 join imdb.Region as r 
 on r.titleId = m.tconst

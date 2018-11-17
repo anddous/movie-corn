@@ -21,27 +21,36 @@
 	<div class='container'>
 			<!-- box MEDIA pro detail filmu-->
 									<div class="media">
+										<!--do src přidat pak odkaz z API NA POSTER-->
 										<img class="media-left" width="200px" margin-right='20px' alt="Image" src="/static/icon_poster.png">
 										<div class="media-body">
 											<div class="ml-3 mb-5">
-											 <h4 class="card-title" >Název filmu
+											 <h4 class="card-title" > + str(row.movie) +
 													<button type="button" class="btn btn-dark" class="float-md-lef">+ WATCH LIST</button>	
 												</h4>	
 												<div class="container">
 													<div class="row">
 														<div class="col-md-4">
+																<!-- + str(row.startY) +  -->
 																<p class:"m-0"><small>Rok:</small></p>
+																<!-- herce vzít z api-->
 																<p class:"m-0"><small>Herci:</small></p>
+																<!-- režišéra vzít z api -->
 																<p class:"m-0"><small>Režisér:</small></p>
 														</div>  <!-- konec levý COL-4-->
 														<div class="col-md-4">
+															<!-- + str(row.stars) + -->
 															<p class:"m-0"><small>Rating:</small></p>
+															<!-- + str(row.country) + -->
 															<p class:"m-0"><small>Země původu:</small></p>
+															<!-- + str(row.runMin) + -->
 															<p class:"m-0"><small>Délka:</small></p>
 														</div>  <!-- konec prostřední COL-4-->
 														<div class="col-md-4">
 															<div class="text-left">
+																<!--+ str(row.genre) + -->
 																<p class:"m-0"><small>Žánr:</small></p>
+																<!-- + str(row.tType) + -->
 																<p class:"m-0"><small>Typ:</small></p>
 															</div>
 														</div> <!-- konec pravý COL-4-->														
@@ -52,36 +61,40 @@
 												<div class="container">
 													<div class="row">
 														<div class="col-md-12">
+															<!--anotaci vzít z api - plot -->
 															<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Fusce consectetuer risus a nunc. Nulla quis diam. Etiam bibendum elit eget erat. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Quisque tincidunt scelerisque libero. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nulla non arcu lacinia neque faucibus fringilla. Fusce nibh. Ut tempus purus at lorem. Morbi scelerisque luctus velit. Phasellus et lorem id felis nonummy placerat. I</p>
 														</div>  <!--KONEC COLUMN -12-->
 													</div>  <!--KONEC ROW V KONTAINERU NA TEXTY-->
 												</div> <!--KONEC KONTAINER NA TEXTY-->
-											</div> <!-- KONEC MARGIN 4-->
-										</div> <!-- KONEC MEDIA BODY-->
-									</div><!-- KONEC CLASS MEDIA-->
-
-<div class="row">
-		<div class="col-md-6">
-			<div class="shadow p-4 mb-4 bg-white">
-				<h5>Kde můžeš film vidět?</h5>
-				<p>ULOŽTO</p>
-				<p>NETFLIX</p>
-				<p>HBOGO</p>
-			</div>
-		</div>
-	<div class="col-md-6">
-			<div class="shadow p-4 mb-4 bg-white">
-		<h5>Titulky ke stažení?</h5>
-			<p>titulky.com</p>
-			<p>subtitles.org</p>
-			<p>...</p>
-			</div>
-	</div>
-	</div>
-
-	
-	</div> <!-- end row container celé stránky-->
+											</div> <!-- KONEC BODY-->
+									</div> <!-- KONEC MEDIA -->
+<br>
+<br>
+										<div class='container'>
+											<div class="row">
+													<div class="col-md-6">
+														<div class="shadow p-4 mb-4 bg-white">
+															<h5>Kde můžeš film vidět?</h5>
+															<p>ULOŽTO</p>
+															<p>NETFLIX</p>
+															<p>HBOGO</p>
+														</div>
+													</div>
+											
+												<div class="col-md-6">
+														<div class="shadow p-4 mb-4 bg-white">
+													<h5>Titulky ke stažení?</h5>
+														<p>titulky.com</p>
+														<p>subtitles.org</p>
+														<p>...</p>
+														</div>
+												</div>
+											</div>
+										</div>
+	</div> <!--KONEC kontainer pro popis filmu-->
 </div>  <!--KONEC jumbotron pro popis filmu-->
+
+
 <!-- footer-->
 <nav class='navbar bg-default navbar-default navbar-fixed-bottom'>           
  <div class='container'>    
