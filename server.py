@@ -60,6 +60,39 @@ def search():
 	year = request.args.get('year')
 	#category = request.args.get('category')
 
+#zkusim stesti
+luckyCategory = request.args.get('luckyCategory')
+	if luckyCategory == 'komedie': 
+		luckyCategory = 'Comedy'
+	elif luckyCategory == 'krimi': 
+		luckyCategory = 'Crime'
+	elif luckyCategory == 'thriller': 
+		luckyCategory = 'Thriller'
+	elif luckyCategory == 'horor': 
+		luckyCategory = 'Horror'
+	elif luckyCategory == 'akční': 
+		luckyCategory = 'Action'
+	elif luckyCategory == 'romantika': 
+		luckyCategory = 'Romance'
+	elif luckyCategory == 'animované': 
+		luckyCategory = 'Animation'
+	elif luckyCategory == 'fantasy':
+		luckyCategory = 'Fantasy'
+	elif luckyCategory == 'sci-fi':
+		luckyCategory = 'Sci-fi'
+	elif luckyCategory == 'drama':
+		luckyCategory = 'Drama'
+	elif luckyCategory == 'dobrodružné':
+		luckyCategory = 'Adventure'
+	elif luckyCategory == 'historie':
+		luckyCategory = 'History'
+	elif luckyCategory == 'western':
+		luckyCategory = 'Western'
+	else:
+		luckyCategory = '%'
+
+	
+
 	if year == "vše" or year == "rok":
 		yearFrom = 1950
 		yearTo = 9999	
