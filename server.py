@@ -1,4 +1,5 @@
 from flask import Flask, render_template, g, Blueprint, url_for, request, redirect, jsonify
+import logging
 #from jinja2 import exceptions
 #from flaskext.mysql import MySQL
 #from openpyxl.reader.excel import load_workbook
@@ -25,7 +26,12 @@ def prihlaseni():
 	# natažení stránky detail-movie
 @movieCorn.route("/detail_m")
 def detail_m():
-  return render_template("detail_m.html")
+	tconst = request.args.get('tconst')
+	# spusteni procedury, ktera nam vrati nazev filmu, rok (vstupni parametr do procedury je tconst)
+	# spusteni ombd API a ziskani ostatnich udaju vcetne adresy na obrazek
+	# vraceni sablony vcetne ziskanych informaci
+	year = 123456
+	return render_template("detail_m.html", year=year, tconst=tconst)
 
 #@movieCorn.route("/api/search/<year>")
 #def GetSearchResult(year):
@@ -89,9 +95,9 @@ def search():
 	elif luckyCategory == 'western':
 		luckyCategory = 'Western'
 	else:
-		luckyCategory = '%'
+		luckyCategory = None
 
-	
+	year = request.args.get('year')
 
 	if year == "vše" or year == "rok":
 		yearFrom = 1950
@@ -106,6 +112,7 @@ def search():
 	# nový kód ANDREA
 	# @category
 	category = request.args.get('category')
+	#	movieCorn.logger.info('category: %s', category)
 	if category == 'komedie': 
 		category = 'Comedy'
 	elif category == 'krimi': 
@@ -133,55 +140,52 @@ def search():
 	elif category == 'western':
 		category = 'Western'
 	else:
-		category = '%'
+		category = None
 
 	# @runtime
 	runtime = request.args.get('runtime')
-	if runtime == "vše" or runtime == "délka":
-		runtimeFrom = 0
-		runtimeTo = 100000000
-	elif runtime == '<60 min.': 
-		runtimeFrom = 0
-		runtimeTo = 59
-	elif runtime == '<90 min.': 
-		runtimeFrom = 0
-		runtimeTo = 89
-	elif runtime == '<120 min.': 
-		runtimeFrom = 0
-		runtimeTo = 119
-	else: 
+	runtimeFrom = 0
+	if runtime == ' <60 min.': 
+		runtimeTo = 60
+	elif runtime == ' <90 min.': 
+		runtimeTo = 90
+	elif runtime == ' <120 min.': 
+		runtimeTo = 120
+	elif runtime == ' >120 min.': 
 		runtimeFrom = 120
-		runtimeTo = 10000000000
+		runtimeTo = None	
+	else: 
+		runtimeTo = None
 
 	# movieType
-	movieType = request.args.get('movieType')
+	movieType = request.args.get('movietype')
+
 	if movieType == 'seriál':
-		movieType = 'null'
+		movieType = 'serial'
 	elif movieType == 'film':
-		movieType = ''
+		movieType = 'film'
+	else:
+		movieType = None
 
 	# @rating
 	rating = request.args.get('rating')
-	if rating == "vše" or rating == "rating":
+	if rating == '<=5.0': 
 		ratingFrom = 0
-		ratingTo = 100
-	elif rating == '<=5.0': 
-		ratingFrom = 0
-		ratingTo = 5.0
+		ratingTo = 5
 	elif rating == '<=7.0': 
-		ratingFrom = 5.1
-		ratingTo = 7.0
+		ratingFrom = 5
+		ratingTo = 7
 	elif rating == '<=8.0': 
-		ratingFrom = 7.1
-		ratingTo = 8.0
+		ratingFrom = 7
+		ratingTo = 8
 	else: 
-		runtimeFrom = 8.1
-		ratingTo = 100
+		ratingFrom = None
+		ratingTo = None
 
 	# Connect to the database
 	database = DatabaseService(connectionString)
-	cursor = database.get_movies(yearFrom, yearTo, category, runtimeFrom, runtimeTo, movieType, ratingFrom, ratingTo)
-
+	cursor = database.get_movies(yearFrom, yearTo, category, runtimeFrom, runtimeTo, movieType, ratingFrom, ratingTo, luckyCategory)
+	tconst = 'tt0120338'
 	html = "<div class='row'>"
 	for row in cursor.fetchall():
 		html = html + """<div class="col-md-4" style="color:black; margin-top: 10px">
@@ -189,7 +193,7 @@ def search():
 							<div class="card-body">"""
 		html = html + "<h5 class='card-title'>"+ str(row.movie) + "</h5>"
 		html = html + """<p class="card-text">Tady bude anotace k filmu - vzít z api - plot. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> 
-										<a href="#" class="btn" style="background-color:#353A41; color:white"> href="/detail_m" </a>
+										<a href="/detail_m?tconst=""" + tconst +"""" class="btn" style="background-color:#353A41; color:white">Detail</a>
 							</div>
 						</div>
 			</div>"""

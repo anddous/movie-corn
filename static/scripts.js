@@ -6,15 +6,15 @@ $(function() {
 
 	$(document).on('click', '#button-search', function() {
 		year = $("#select-year").text()
-		//category = $("#select-category").text()
-		//length = $("#select-year").text()
-		//type = $("#select-year").text()
+		category = $("#select-category").text()
+		runtime = $("#select-runtime").text()
+		movietype = $("#select-movietype").text()
 
 		$.ajax({
 			url: "/api/search",
 			type: 'GET',
 			cache: false,
-			data: {year: year},
+			data: {year: year, category: category, runtime: runtime, movietype: movietype},
 		}).done(function(result){
 				$('#search-result').html("");
 				$('#search-result').css("min-height","500px");
