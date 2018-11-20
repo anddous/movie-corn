@@ -13,25 +13,20 @@ join imdb.Rating as rat
 on rat.tconst = m.tconst 
 left join imdb.Episode as e
 on m.tconst = e.tconst
--- ASI NENÍ TØEBA PØIPOJOVAT - VEZMEME Z API
---left join imdb.Writer as w
---on m.tconst = w.tconst
---left join imdb.Person as p
---on w.nconst = p.nconst
 where m.startYear >= @yearFrom
 and m.startYear <= @yearTo
 and r.region in ('CZ', 'SK', 'GB', 'US')
--- @category parametr - obsahuje aspoò jednu za kagorií
+-- @category parametr - obsahuje aspoï¿½ jednu za kagoriï¿½
 and m.genres like '%'+@category+'%'
--- @runtime parametr - délka
+-- @runtime parametr - dï¿½lka
 and m.runtimeMinutes > @runtimeFrom
 and m.runtimeMinutes < @runtimeTo
--- @movie_type -- nebere dotaz s 'is null', nevíme, jak se na to zeptat
+-- @movie_type -- nebere dotaz s 'is null', nevï¿½me, jak se na to zeptat
 and e.seasonNumber is @movieType null
 -- @rating
 and rat.averageRating >= @ratingFrom
 and rat.averageRating <= @ratingTo
--- omezení typu
+-- omezenï¿½ typu
 and m.titleType in ('movie', 'tvMovie', 'tvEpisode')
 
 end
