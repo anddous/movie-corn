@@ -15,9 +15,8 @@ Index.html
 - přidán odkaz na novou hmtl stránku (struktura pro detail filmu) - název: Detail_m (do hlavičky webu, abych si stránku mohla vyzkoušet, jak vypadá)
 
 SQL queries obsahuje:
-- zkušební pro dotazy v SQL
-- upravená procedura pro další filtry:
-AD_AD_dbo-get-movies- procedura_pokus1.sql
+- nová funkční procedura - zapracované tconst 
+dbo-get-movies-procedura1_tconst.sql
 
 - původní Lukášova procedura z hackatlonu:
 dbo-get-movies-procedura.sql
@@ -38,7 +37,6 @@ API pro info, kde filmy běží + kde stáhnout film + titulky
 
 	Opensubtitles.org - hledání "nemo" - cz + slove
 	https://www.opensubtitles.org/cs/search2/sublanguageid-cze,slo/moviename-nemo
-
 
 
 
