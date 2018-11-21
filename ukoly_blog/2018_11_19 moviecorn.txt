@@ -1,5 +1,11 @@
 #1 => zprovoznit debug v Pythonu
 #2 => zprovoznit filtr na rating
+chyby:
+- index.html - mezery pøed
+- sql procedura - smazat = u ratingFrom
+- script.js - dodelat rating - definice + doplnit do promìnných
+
+
 #3 => pridat tconst parametr do tlacitka vysledku hledani (zjistit z databaze)
 #4 => po kliku na detail 
 	a) => zjistit z databaze podle parametru tconst informace, ktere mame k dispozici v nasi DB

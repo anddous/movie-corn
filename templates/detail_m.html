@@ -22,7 +22,7 @@
 			<!-- box MEDIA pro detail filmu-->
 									<div class="media">
 										<!--do src přidat pak odkaz z API NA POSTER-->
-										<img class="media-left" width="200px" margin-right='20px' alt="Image" src="/static/icon_poster.png">
+										<img class="media-left" width="200px" margin-right='20px' alt="Image" src= "{{ url_for(movies['Poster']) }}">
 										<div class="media-body">
 											<div class="ml-3 mb-5">
 											 <h4 class="card-title" > + str(row.movie) +
@@ -33,26 +33,26 @@
 														<div class="col-md-4">
 															tconst: {{ tconst }}
 																<!-- + str(row.startY) +  -->
-																<p class:"m-0"><small>Rok:</small>{{ year }}</p>
+																<p class:"m-0"><small>Rok: {{ row.startY }}</small></p>
 																<!-- herce vzít z api-->
-																<p class:"m-0"><small>Herci:</small></p>
+																<p class:"m-0"><small>Herci: {{ movies['Actors'] }}</small>-</p>
 																<!-- režišéra vzít z api -->
-																<p class:"m-0"><small>Režisér:</small></p>
+																<p class:"m-0"><small>Režisér: {{ movies['Director'] }}</small></p>
 														</div>  <!-- konec levý COL-4-->
 														<div class="col-md-4">
 															<!-- + str(row.stars) + -->
-															<p class:"m-0"><small>Rating:</small></p>
+															<p class:"m-0"><small>Rating: {{ str(row.stars) }}</small></p>
 															<!-- + str(row.country) + -->
-															<p class:"m-0"><small>Země původu:</small></p>
+															<p class:"m-0"><small>Země původu: {{ str(row.country) }}</small></p>
 															<!-- + str(row.runMin) + -->
-															<p class:"m-0"><small>Délka:</small></p>
+															<p class:"m-0"><small>Délka:  {{ str(row.runMin) }}</small></p>
 														</div>  <!-- konec prostřední COL-4-->
 														<div class="col-md-4">
 															<div class="text-left">
 																<!--+ str(row.genre) + -->
-																<p class:"m-0"><small>Žánr:</small></p>
+																<p class:"m-0"><small>Žánr:  {{ str(row.genre) }}</small></p>
 																<!-- + str(row.tType) + -->
-																<p class:"m-0"><small>Typ:</small></p>
+																<p class:"m-0"><small>Typ:  {{ str(row.tType) }}</small></p>
 															</div>
 														</div> <!-- konec pravý COL-4-->														
 													</div>  <!-- konec ROW v containeru-->
@@ -63,7 +63,7 @@
 													<div class="row">
 														<div class="col-md-12">
 															<!--anotaci vzít z api - plot -->
-															<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Fusce consectetuer risus a nunc. Nulla quis diam. Etiam bibendum elit eget erat. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Quisque tincidunt scelerisque libero. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nulla non arcu lacinia neque faucibus fringilla. Fusce nibh. Ut tempus purus at lorem. Morbi scelerisque luctus velit. Phasellus et lorem id felis nonummy placerat. I</p>
+															<p class="card-text">{{ movies['Plot'] }}</p>
 														</div>  <!--KONEC COLUMN -12-->
 													</div>  <!--KONEC ROW V KONTAINERU NA TEXTY-->
 												</div> <!--KONEC KONTAINER NA TEXTY-->
@@ -76,7 +76,7 @@
 													<div class="col-md-6">
 														<div class="shadow p-4 mb-4 bg-white">
 															<h5>Kde můžeš film vidět?</h5>
-															<p>ULOŽTO</p>
+															<p> <a href: ULOŽTO</p>
 															<p>NETFLIX</p>
 															<p>HBOGO</p>
 														</div>

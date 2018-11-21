@@ -4,6 +4,8 @@ import logging
 #from flaskext.mysql import MySQL
 #from openpyxl.reader.excel import load_workbook
 from DatabaseService import DatabaseService
+# zavolání třídy ApiService
+#from ApiService import ApiService
 movieCorn = Flask(__name__)
 
 connectionString = "DRIVER={SQL Server};SERVER=DESKTOP-EII5KB0\SQLEXPRESS;DATABASE=MovieCorn;Trusted_Connection=yes;"
@@ -64,40 +66,6 @@ def search():
 @movieCorn.route("/api/search")
 def search():
 	year = request.args.get('year')
-	#category = request.args.get('category')
-
-#zkusim stesti
-	luckyCategory = request.args.get('luckyCategory')
-	if luckyCategory == 'komedie': 
-		luckyCategory = 'Comedy'
-	elif luckyCategory == 'krimi': 
-		luckyCategory = 'Crime'
-	elif luckyCategory == 'thriller': 
-		luckyCategory = 'Thriller'
-	elif luckyCategory == 'horor': 
-		luckyCategory = 'Horror'
-	elif luckyCategory == 'akční': 
-		luckyCategory = 'Action'
-	elif luckyCategory == 'romantika': 
-		luckyCategory = 'Romance'
-	elif luckyCategory == 'animované': 
-		luckyCategory = 'Animation'
-	elif luckyCategory == 'fantasy':
-		luckyCategory = 'Fantasy'
-	elif luckyCategory == 'sci-fi':
-		luckyCategory = 'Sci-fi'
-	elif luckyCategory == 'drama':
-		luckyCategory = 'Drama'
-	elif luckyCategory == 'dobrodružné':
-		luckyCategory = 'Adventure'
-	elif luckyCategory == 'historie':
-		luckyCategory = 'History'
-	elif luckyCategory == 'western':
-		luckyCategory = 'Western'
-	else:
-		luckyCategory = None
-
-	year = request.args.get('year')
 
 	if year == "vše" or year == "rok":
 		yearFrom = 1950
@@ -109,7 +77,6 @@ def search():
 		yearFrom = year[:4]
 		yearTo = 9999
 
-	# nový kód ANDREA
 	# @category
 	category = request.args.get('category')
 	#	movieCorn.logger.info('category: %s', category)
@@ -184,7 +151,7 @@ def search():
 
 	# Connect to the database
 	database = DatabaseService(connectionString)
-	cursor = database.get_movies(yearFrom, yearTo, category, runtimeFrom, runtimeTo, movieType, ratingFrom, ratingTo, luckyCategory)
+	cursor = database.get_movies(yearFrom, yearTo, category, runtimeFrom, runtimeTo, movieType, ratingFrom, ratingTo)
 	tconst = 'tt0120338'
 	html = "<div class='row'>"
 	for row in cursor.fetchall():
@@ -192,7 +159,8 @@ def search():
 					<div class="card" style="width: 18rem; background-color:#ddd">
 							<div class="card-body">"""
 		html = html + "<h5 class='card-title'>"+ str(row.movie) + "</h5>"
-		html = html + """<p class="card-text">Tady bude anotace k filmu - vzít z api - plot. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> 
+		html = html + """<p class="card-text">
+											Genre: """ + str(row.genre) +"""<br>Year: """ + str(row.startY) + """<br>Country: """+ str(row.country) + """ <br>Rating: """ + str(row.stars) + """<br>Typ: """+ str(row.tType) + """</p> 
 										<a href="/detail_m?tconst=""" + tconst +"""" class="btn" style="background-color:#353A41; color:white">Detail</a>
 							</div>
 						</div>
