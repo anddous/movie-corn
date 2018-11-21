@@ -32,35 +32,11 @@ def detail_m():
 	# spusteni procedury, ktera nam vrati nazev filmu, rok (vstupni parametr do procedury je tconst)
 	# spusteni ombd API a ziskani ostatnich udaju vcetne adresy na obrazek
 	# vraceni sablony vcetne ziskanych informaci
-	year = 123456
-	return render_template("detail_m.html", year=year, tconst=tconst)
+	return render_template("detail_m.html", tconst=tconst)
 
 #@movieCorn.route("/api/search/<year>")
 #def GetSearchResult(year):
 #  return render_template("registrace.html")
-
-''' Funkcni reseni, vraci JSON
-# https://stackoverflow.com/questions/24892035/python-flask-how-to-get-parameters-from-a-url
-@movieCorn.route("/api/search")
-def search():
-	
-	year = request.args.get('year')
-	yearFrom = year[:4]
-	if year.find("-"):
-			yearTo = year[-4:]
-	else: # ...
-			yearTo = 9999
-
-	# Connect to the database
-	database = DatabaseService(connectionString)
-	cursor = database.get_movies(yearFrom, yearTo)
-
-	output = []
-	for row in cursor.fetchall():
-		output.append(row.originalTitle)
-
-	return jsonify(output)
-'''
 
 # https://stackoverflow.com/questions/24892035/python-flask-how-to-get-parameters-from-a-url
 @movieCorn.route("/api/search")
@@ -149,10 +125,11 @@ def search():
 		ratingFrom = None
 		ratingTo = None
 
+	tconst = request.args.get('tconst')
+
 	# Connect to the database
 	database = DatabaseService(connectionString)
-	cursor = database.get_movies(yearFrom, yearTo, category, runtimeFrom, runtimeTo, movieType, ratingFrom, ratingTo)
-	tconst = 'tt0120338'
+	cursor = database.get_movies(yearFrom, yearTo, category, runtimeFrom, runtimeTo, movieType, ratingFrom, ratingTo, tconst)
 	html = "<div class='row'>"
 	for row in cursor.fetchall():
 		html = html + """<div class="col-md-4" style="color:black; margin-top: 10px">
@@ -161,7 +138,7 @@ def search():
 		html = html + "<h5 class='card-title'>"+ str(row.movie) + "</h5>"
 		html = html + """<p class="card-text">
 											Genre: """ + str(row.genre) +"""<br>Year: """ + str(row.startY) + """<br>Country: """+ str(row.country) + """ <br>Rating: """ + str(row.stars) + """<br>Typ: """+ str(row.tType) + """</p> 
-										<a href="/detail_m?tconst=""" + tconst +"""" class="btn" style="background-color:#353A41; color:white">Detail</a>
+										<a href="/detail_m?tconst=""" + str(row.tconst) +"""" class="btn" style="background-color:#353A41; color:white">Detail</a>
 							</div>
 						</div>
 			</div>"""

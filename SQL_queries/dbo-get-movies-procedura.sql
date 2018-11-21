@@ -6,7 +6,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE procedure [dbo].[usp_GetMovies](
+ALTER procedure [dbo].[usp_GetMovies](
 @yearFrom int, 
 @yearTo int, 
 @category nvarchar(255), 
@@ -14,7 +14,8 @@ CREATE procedure [dbo].[usp_GetMovies](
 @runtimeTo int, 
 @movieType nvarchar(255), 
 @ratingFrom int, 
-@ratingTo int)
+@ratingTo int
+@tconst nvarchar(255)
 as
 begin
 
@@ -52,6 +53,6 @@ and
 and (@ratingFrom is null or rat.averageRating >= @ratingFrom)
 and (@ratingTo is null or rat.averageRating <= @ratingTo)
 and m.titleType in ('movie', 'tvMovie', 'tvEpisode')
-
+and @tconst = m.tconst
 end
 

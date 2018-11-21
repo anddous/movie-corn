@@ -15,7 +15,7 @@ $(function() {
 			url: "/api/search",
 			type: 'GET',
 			cache: false,
-			data: {year: year, category: category, runtime: runtime, movietype: movietype, rating},
+			data: {year: year, category: category, runtime: runtime, movietype: movietype, rating: rating},
 		}).done(function(result){
 				$('#search-result').html("");
 				$('#search-result').css("min-height","500px");
