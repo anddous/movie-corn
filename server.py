@@ -34,9 +34,6 @@ def detail_m():
 	# vraceni sablony vcetne ziskanych informaci
 	return render_template("detail_m.html", tconst=tconst)
 
-#@movieCorn.route("/api/search/<year>")
-#def GetSearchResult(year):
-#  return render_template("registrace.html")
 
 # https://stackoverflow.com/questions/24892035/python-flask-how-to-get-parameters-from-a-url
 @movieCorn.route("/api/search")
