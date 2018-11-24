@@ -46,9 +46,7 @@ def detail_m():
   
 	hasPoster = True if filmAPI['Poster'] != 'N/A' else False
 
-	return render_template("detail_m.html", tconst=tconst, movie=filmDB.primaryTitle, startYear=filmDB.startYear,tType=filmDB.titleType, runMin=filmDB.runtimeMinutes, genre=filmDB.genres, country=filmDB.region, stars=filmDB.averageRating, actors=filmAPI['Actors'], director=filmAPI['Director'], detail=filmAPI['Plot'], poster=filmAPI['Poster'], hasPoster=hasPoster)
-
-
+	return render_template("detail_m.html", tconst=tconst, movie=filmDB.originalTitle, startYear=filmDB.startYear,tType=filmDB.titleType, runMin=filmDB.runtimeMinutes, genre=filmDB.genres, country=filmDB.region, stars=filmDB.averageRating, actors=filmAPI['Actors'], director=filmAPI['Director'], detail=filmAPI['Plot'], poster=filmAPI['Poster'], hasPoster=hasPoster)
 
 # https://stackoverflow.com/questions/24892035/python-flask-how-to-get-parameters-from-a-url
 @movieCorn.route("/api/search")
