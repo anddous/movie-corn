@@ -133,6 +133,9 @@ def search():
 	elif rating == '<=8.0': 
 		ratingFrom = 7
 		ratingTo = 8
+	elif rating == '>=8.0': 
+		ratingFrom = 8
+		ratingTo = None
 	else: 
 		ratingFrom = None
 		ratingTo = None
