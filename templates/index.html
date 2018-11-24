@@ -4,7 +4,7 @@
 <main>
 <nav class='navbar bg-dark navbar-dark navbar-expand-sm'>
 <div class='container'>    
-  	<a class='navbar-brand' href='#'>
+  	<a class='navbar-brand' href='/'>
 			<img src="{{ url_for('static', filename='pop-corn.png') }}" style='width: 80px;' alt="MOVIE-CORN">
 			MOVIE-CORN
   	</a>
@@ -21,24 +21,29 @@
    <div class='row'> 
     <div class='col-md-6'>                       
       <div class='jumbotron' style="background-color:#353A41;" style="text-align: center">                    
-            <div class="text-center">
-                        <p><b style="color: white;">Nech se překvapit - vyber pouze žánr a vybereme Ti 5 filmů</b>
+            <div class="text-center"  id="lucky">
+                        <p><b style="color: white;">Nech se překvapit - vyber pouze žánr a vybereme Ti 6 filmů</b>
                         </p>                        
                         <div class="dropdown">                          
-                            <button class="btn btn-danger btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">ZKUSÍM ŠTĚSTÍ                           
+                            <button  class="btn btn-danger btn-lg dropdown-toggle" type="button" data-toggle="dropdown">	<span id="select-lucky-category" class="value"></span> 															ZKUSÍM ŠTĚSTÍ
                             <span id="select-lucky-category" class="caret"> </span>
-                            </button>                          
 															<ul class="dropdown-menu" role="menu">
-																<li class="dropdown-item">komedie</li>
-																<li class="dropdown-item">krimi</li>
-																<li class="dropdown-item">triller</li>
-																<li class="dropdown-item">horror</li>
-																<li class="dropdown-item">akční</li>
-																<li class="dropdown-item">romantika</li>
-																<li class="dropdown-item">animované</li>
-																<li class="dropdown-item">pro dospělé</li>
-																<li class="dropdown-item">vše</li> 	
-                            </ul>                        
+																	<li class="dropdown-item">komedie</li>
+																	<li class="dropdown-item">krimi</li>
+																	<li class="dropdown-item">thriller</li>
+																	<li class="dropdown-item">horror</li>
+																	<li class="dropdown-item">akční</li>
+																	<li class="dropdown-item">romantika</li>
+																	<li class="dropdown-item">animované</li>
+																	<li class="dropdown-item">fantasy</li>
+																	<li class="dropdown-item">sci-fi</li>
+																	<li class="dropdown-item">drama</li>
+																	<li class="dropdown-item">dobrodružné</li>
+																	<li class="dropdown-item">historie</li>
+																	<li class="dropdown-item">western</li>
+																	<li class="dropdown-item">vše</li> 	
+														</ul>
+													</button>                          													
                         </div>    <!-- konec dropdown - ZKUSÍM ŠTĚSTÍ-->
                         <br>
 												<br>

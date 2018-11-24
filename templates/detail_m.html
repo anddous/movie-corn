@@ -5,7 +5,7 @@
 <main> 
 <nav class='navbar bg-dark navbar-dark navbar-expand-sm'>
 <div class='container'>    
-    <a class='navbar-brand' href='#'>
+    <a class='navbar-brand' href='/'>
 			<img src="{{ url_for('static', filename='pop-corn.png') }}" style='width: 80px;' alt="MOVIE-CORN">
 			MOVIE-CORN <!--FAVICON-->
 	</a>
@@ -22,7 +22,12 @@
 			<!-- box MEDIA pro detail filmu-->
 									<div class="media">
 										<!--do src přidat pak odkaz z API NA POSTER -->
-										<img class="media-left" width="200px" margin-right='20px' alt="Image" src= # }}">
+										{% if hasPoster %}										
+										<img class="media-left" width="200px" margin-right='20px' alt="Image" src="{{ poster }}">
+										{% else %}
+										<img src="{{ url_for('static', filename='no-image.png') }}" style='width: 250px;' alt="MOVIE-CORN">
+										{% endif %}
+										
 										<div class="media-body">
 											<div class="ml-3 mb-5">
 											 <h4 class="card-title" > {{movie}}
@@ -31,13 +36,12 @@
 												<div class="container">
 													<div class="row">
 														<div class="col-md-4">
-															tconst: {{ tconst }}
 																<!-- + str(row.startY) +  -->
-																<p class:"m-0"><small>Rok: {{ startY }}</small></p>
+																<p class:"m-0"><small>Rok: {{ startYear }}</small></p>
 																<!-- herce vzít z api-->
-																<p class:"m-0"><small>Herci: </small>-</p>
+																<p class:"m-0"><small>Herci: {{ actors }} </small></p>
 																<!-- režišéra vzít z api -->
-																<p class:"m-0"><small>Režisér: </small></p>
+																<p class:"m-0"><small>Režisér: {{ director }} </small></p>
 														</div>  <!-- konec levý COL-4-->
 														<div class="col-md-4">
 															<!-- + str(row.stars) + -->
@@ -59,11 +63,15 @@
 												</div>	 <!-- konec container - vrchní část - detail filmu-->
 												</div><!-- konec class="ml-3 mb-5-->
 
-												<div class="container">
-													<div class="row">
-														<div class="col-md-12">
+														<div class="container">
+															<div class="row">
+																<div class="col-md-12">
+																		<p class:"m-0"><small>Detail: 
+																		<br>
+																		<br>
+																	{{ detail }}</small></p>
 															<!--anotaci vzít z api - plot -->
-															<p class="card-text">Lorem impsum</p>
+												
 														</div>  <!--KONEC COLUMN -12-->
 													</div>  <!--KONEC ROW V KONTAINERU NA TEXTY-->
 												</div> <!--KONEC KONTAINER NA TEXTY-->
@@ -76,12 +84,12 @@
 													<div class="col-md-6">
 														<div class="shadow p-4 mb-4 bg-white">
 															<h5>Kde můžeš film vidět?</h5>
-															<p> <a href: ULOŽTO</p>
+															<p> <a href="">ULOŽTO</a></p>
 															<p>NETFLIX</p>
 															<p>HBOGO</p>
 														</div>
 													</div>
-											
+												
 												<div class="col-md-6">
 														<div class="shadow p-4 mb-4 bg-white">
 													<h5>Titulky ke stažení?</h5>

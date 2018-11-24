@@ -1,13 +1,9 @@
 from flask import Flask, render_template, g, Blueprint, url_for, request, redirect, jsonify
 import logging
-import json
-import requests
 #from jinja2 import exceptions
 #from flaskext.mysql import MySQL
 #from openpyxl.reader.excel import load_workbook
 from DatabaseService import DatabaseService
-# zavolání třídy ApiService
-#from ApiService import ApiService
 movieCorn = Flask(__name__)
 
 connectionString = "DRIVER={SQL Server};SERVER=localhost\SQLEXPRESS01;DATABASE=MovieCorn;Trusted_Connection=yes;"
@@ -34,25 +30,73 @@ def detail_m():
 	# spusteni procedury, ktera nam vrati nazev filmu, rok (vstupni parametr do procedury je tconst)
 	# spusteni ombd API a ziskani ostatnich udaju vcetne adresy na obrazek
 	# vraceni sablony vcetne ziskanych informaci
+	year = 123456
+	return render_template("detail_m.html", year=year, tconst=tconst)
 
-	## Vytahneme {{movie}} a {{startY}} z databaze
+#@movieCorn.route("/api/search/<year>")
+#def GetSearchResult(year):
+#  return render_template("registrace.html")
+
+''' Funkcni reseni, vraci JSON
+# https://stackoverflow.com/questions/24892035/python-flask-how-to-get-parameters-from-a-url
+@movieCorn.route("/api/search")
+def search():
+	
+	year = request.args.get('year')
+	yearFrom = year[:4]
+	if year.find("-"):
+			yearTo = year[-4:]
+	else: # ...
+			yearTo = 9999
+
+	# Connect to the database
 	database = DatabaseService(connectionString)
-	cursor = database.get_movie(tconst)
-	vysledekDatabaze = cursor.fetchall()
-	filmDB = vysledekDatabaze[0]
-	## Dotaze se API na zbytek informaci
-	dotaz = requests.get('http://www.omdbapi.com/?apikey=c206c397&i='+tconst)
-	filmAPI = json.loads(dotaz.text)
-  
-	hasPoster = True if filmAPI['Poster'] != 'N/A' else False
+	cursor = database.get_movies(yearFrom, yearTo)
 
-	return render_template("detail_m.html", tconst=tconst, movie=filmDB.primaryTitle, startYear=filmDB.startYear,tType=filmDB.titleType, runMin=filmDB.runtimeMinutes, genre=filmDB.genres, country=filmDB.region, stars=filmDB.averageRating, actors=filmAPI['Actors'], director=filmAPI['Director'], detail=filmAPI['Plot'], poster=filmAPI['Poster'], hasPoster=hasPoster)
+	output = []
+	for row in cursor.fetchall():
+		output.append(row.originalTitle)
 
-
+	return jsonify(output)
+'''
 
 # https://stackoverflow.com/questions/24892035/python-flask-how-to-get-parameters-from-a-url
 @movieCorn.route("/api/search")
 def search():
+	year = request.args.get('year')
+	#category = request.args.get('category')
+
+#zkusim stesti
+	luckyCategory = request.args.get('luckyCategory')
+	if luckyCategory == 'komedie': 
+		luckyCategory = 'Comedy'
+	elif luckyCategory == 'krimi': 
+		luckyCategory = 'Crime'
+	elif luckyCategory == 'thriller': 
+		luckyCategory = 'Thriller'
+	elif luckyCategory == 'horor': 
+		luckyCategory = 'Horror'
+	elif luckyCategory == 'akční': 
+		luckyCategory = 'Action'
+	elif luckyCategory == 'romantika': 
+		luckyCategory = 'Romance'
+	elif luckyCategory == 'animované': 
+		luckyCategory = 'Animation'
+	elif luckyCategory == 'fantasy':
+		luckyCategory = 'Fantasy'
+	elif luckyCategory == 'sci-fi':
+		luckyCategory = 'Sci-fi'
+	elif luckyCategory == 'drama':
+		luckyCategory = 'Drama'
+	elif luckyCategory == 'dobrodružné':
+		luckyCategory = 'Adventure'
+	elif luckyCategory == 'historie':
+		luckyCategory = 'History'
+	elif luckyCategory == 'western':
+		luckyCategory = 'Western'
+	else:
+		luckyCategory = None
+
 	year = request.args.get('year')
 
 	if year == "vše" or year == "rok":
@@ -65,6 +109,7 @@ def search():
 		yearFrom = year[:4]
 		yearTo = 9999
 
+	# nový kód ANDREA
 	# @category
 	category = request.args.get('category')
 	#	movieCorn.logger.info('category: %s', category)
@@ -137,20 +182,18 @@ def search():
 		ratingFrom = None
 		ratingTo = None
 
-	tconst = request.args.get('tconst')
-
 	# Connect to the database
 	database = DatabaseService(connectionString)
-	cursor = database.get_movies(yearFrom, yearTo, category, runtimeFrom, runtimeTo, movieType, ratingFrom, ratingTo, tconst)
+	cursor = database.get_movies(yearFrom, yearTo, category, runtimeFrom, runtimeTo, movieType, ratingFrom, ratingTo, luckyCategory)
+	tconst = 'tt0120338'
 	html = "<div class='row'>"
 	for row in cursor.fetchall():
 		html = html + """<div class="col-md-4" style="color:black; margin-top: 10px">
 					<div class="card" style="width: 18rem; background-color:#ddd">
 							<div class="card-body">"""
 		html = html + "<h5 class='card-title'>"+ str(row.movie) + "</h5>"
-		html = html + """<p class="card-text">
-											Genre: """ + str(row.genre) +"""<br>Year: """ + str(row.startY) + """<br>Country: """+ str(row.country) + """ <br>Rating: """ + str(row.stars) + """<br>Typ: """+ str(row.tType) + """</p> 
-										<a href="/detail_m?tconst=""" + str(row.tconst) +"""" class="btn" style="background-color:#353A41; color:white">Detail</a>
+		html = html + """<p class="card-text">Tady bude anotace k filmu - vzít z api - plot. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> 
+										<a href="/detail_m?tconst=""" + tconst +"""" class="btn" style="background-color:#353A41; color:white">Detail</a>
 							</div>
 						</div>
 			</div>"""
