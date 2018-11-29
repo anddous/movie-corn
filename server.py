@@ -10,7 +10,7 @@ from DatabaseService import DatabaseService
 #from ApiService import ApiService
 movieCorn = Flask(__name__)
 
-connectionString = "DRIVER={SQL Server};SERVER=localhost\SQLEXPRESS01;DATABASE=MovieCorn;Trusted_Connection=yes;"
+connectionString = "DRIVER={SQL Server};SERVER=DESKTOP-EII5KB0\SQLEXPRESS;DATABASE=MovieCorn;Trusted_Connection=yes;"
 
 # natažení home-page index
 @movieCorn.route('/', methods=['GET'])

@@ -36,26 +36,19 @@
 												<div class="container">
 													<div class="row">
 														<div class="col-md-4">
-																<!-- + str(row.startY) +  -->
 																<p class:"m-0"><small>Rok: {{ startYear }}</small></p>
-																<!-- herce vzít z api-->
 																<p class:"m-0"><small>Herci: {{ actors }} </small></p>
-																<!-- režišéra vzít z api -->
-																<p class:"m-0"><small>Režisér: {{ director }} </small></p>
+
 														</div>  <!-- konec levý COL-4-->
 														<div class="col-md-4">
-															<!-- + str(row.stars) + -->
 															<p class:"m-0"><small>Rating: {{ stars }}</small></p>
-															<!-- + str(row.country) + -->
 															<p class:"m-0"><small>Země původu: {{ country }}</small></p>
-															<!-- + str(row.runMin) + -->
-															<p class:"m-0"><small>Délka:  {{ runMin }}</small></p>
+															<p class:"m-0"><small>Délka (min.):  {{ runMin }}</small></p>
 														</div>  <!-- konec prostřední COL-4-->
 														<div class="col-md-4">
 															<div class="text-left">
-																<!--+ str(row.genre) + -->
+																<p class:"m-0"><small>Režisér: {{ director }} </small></p>																
 																<p class:"m-0"><small>Žánr:  {{ genre }}</small></p>
-																<!-- + str(row.tType) + -->
 																<p class:"m-0"><small>Typ:  {{ tType }}</small></p>
 															</div>
 														</div> <!-- konec pravý COL-4-->														
@@ -66,10 +59,9 @@
 														<div class="container">
 															<div class="row">
 																<div class="col-md-12">
-																		<p class:"m-0"><small>Detail: 
+																		<p class:"m-0"><b>O FILMU:</b> 
 																		<br>
-																		<br>
-																	{{ detail }}</small></p>
+																	{{ detail }}</p>
 															<!--anotaci vzít z api - plot -->
 												
 														</div>  <!--KONEC COLUMN -12-->
@@ -84,7 +76,7 @@
 													<div class="col-md-6">
 														<div class="shadow p-4 mb-4 bg-white">
 															<h5>Kde můžeš film vidět?</h5>
-															<p> <a href="">ULOŽTO</a></p>
+															<p> <a href="https://uloz.to/hledej?q={{movie}}+{{startYear}}&type=videos" target="_blank">ULOŽTO</a></p>
 															<p>NETFLIX</p>
 															<p>HBOGO</p>
 														</div>
@@ -93,8 +85,8 @@
 												<div class="col-md-6">
 														<div class="shadow p-4 mb-4 bg-white">
 													<h5>Titulky ke stažení?</h5>
-														<p>titulky.com</p>
-														<p>subtitles.org</p>
+														<p><a href="https://www.titulky.com/?Fulltext={{movie}}" target="_blank">titulky.com</a></p>
+														<p><a href="https://www.opensubtitles.org/cs/search2/sublanguageid-cze,slo/moviename-{{movie}}" target="_blank">opensubtitles.org</a></p>
 														<p>...</p>
 														</div>
 												</div>
