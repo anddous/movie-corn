@@ -23,11 +23,10 @@
 									<div class="media">
 										<!--do src přidat pak odkaz z API NA POSTER -->
 										{% if hasPoster %}										
-										<img class="media-left" width="200px" margin-right='20px' alt="Image" src="{{ poster }}">
+										<img class="media-left" width="200px" align="middle" hspace="20" alt="Image" src="{{ poster }}">
 										{% else %}
 										<img src="{{ url_for('static', filename='no-image.png') }}" style='width: 250px;' alt="MOVIE-CORN">
 										{% endif %}
-										
 										<div class="media-body">
 											<div class="ml-3 mb-5">
 											 <h4 class="card-title" > {{movie}}
@@ -77,8 +76,8 @@
 														<div class="shadow p-4 mb-4 bg-white">
 															<h5>Kde můžeš film vidět?</h5>
 															<p> <a href="https://uloz.to/hledej?q={{movie}}+{{startYear}}&type=videos" target="_blank">ULOŽTO</a></p>
-															<p>NETFLIX</p>
-															<p>HBOGO</p>
+															<p> <a href="https://www.netflix.com/search?q={{movie}}" target="_blank">NETFLIX</a></p>
+															<p><a href="https://hbogo.cz/search/{{movie}}" target="_blank">HBOGO</a></p>
 														</div>
 													</div>
 												
