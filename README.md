@@ -1,46 +1,25 @@
 ﻿# movie-corn
 
-PY SOUBORY:
-Funkční soubory po hackatlonu - funkční filtry pouze na rok:
-- server_Lukas.py
-- DatabaseServis_Lukas.py
+Popis souborů:
+----------
+MAIN PROGRAM:
+server.py
+----------
+PROPOJENÍ S DATABÁZÍ (třída DatabaseService)
+DatabaseService.py
 
-Verze s dopracovanými filtry, ale zatím nefungují:
-- server.py
-- DatabaseServis.py
+----------
+HMTL struktura:
+static
+- CSS soubory - bootstrap
+- javascript soubory
+	- bootstrap.js
+	- script.js - AJAX script
 
-TEMPLATES:
-Index.html
-- změny od hacktlonu - u filtrů dopsané ID
-- přidán odkaz na novou hmtl stránku (struktura pro detail filmu) - název: Detail_m (do hlavičky webu, abych si stránku mohla vyzkoušet, jak vypadá)
-
-SQL queries obsahuje:
-- nová funkční procedura - zapracované tconst 
-dbo-get-movies-procedura1_tconst.sql
-
-- původní Lukášova procedura z hackatlonu:
-dbo-get-movies-procedura.sql
-
-API pro další informace k filmů:
-- omdb.py
-- ombd1.py - dopsané do sys.argv odkazy na výsledky z hledání, zatím dále nerozpracováno dále
-
-API pro info, kde filmy běží + kde stáhnout film + titulky
-	TV program - xml 
-	https://www.ceskatelevize.cz/xml/tv-program/
-
-	Hledání ulozto:	 - hledání "The Row 2018"
-	https://uloz.to/hledej?q=The+Row+2018&type=videos
-
-	Titulky.com - hledání "nemo"
-	https://www.titulky.com/?Fulltext=nemo
-
-	Opensubtitles.org - hledání "nemo" - cz + slove
-	https://www.opensubtitles.org/cs/search2/sublanguageid-cze,slo/moviename-nemo
-
-
-
-
-
-
-
+templates
+- hmtl stránky aplikace:
+	index.html - home-page
+	detail_m.html - stránky s detailem vyhledaného filmu
+	prihlaseni.html - příprava na přihlašovací stránku
+	registrace.html - příprava na registrační stránku
+	layout.html - šablona - hlavička všech stránek

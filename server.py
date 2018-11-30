@@ -2,12 +2,8 @@ from flask import Flask, render_template, g, Blueprint, url_for, request, redire
 import logging
 import json
 import requests
-#from jinja2 import exceptions
-#from flaskext.mysql import MySQL
-#from openpyxl.reader.excel import load_workbook
 from DatabaseService import DatabaseService
-# zavolání třídy ApiService
-#from ApiService import ApiService
+
 movieCorn = Flask(__name__)
 
 connectionString = "DRIVER={SQL Server};SERVER=DESKTOP-EII5KB0\SQLEXPRESS;DATABASE=MovieCorn;Trusted_Connection=yes;"
